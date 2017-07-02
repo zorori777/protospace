@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "haml-rails"
 gem "erb2haml"
+gem 'bootstrap-sass'
 
 # development and test gem list
 group :development, :test do
