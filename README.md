@@ -15,15 +15,14 @@
 
 
   ・**assosiation**
-  has_many :prototypes
 
-  has_many :comments
-
-  has_many :Likes
+    has_many :prototypes
+    has_many :comments
+    has_many :Likes
 
   ・**index**
-     name
 
+     name
      email
 
 # prototype
@@ -37,13 +36,15 @@
 
 
  ・**assosiation**
-  has_many   :comments
-  has_many   :capture_images
-  has_many   :Like
-  belongs_to :user
+
+    has_many   :comments
+    has_many   :capture_images
+    has_many   :Like
+    belongs_to :user
 
  ・**index**
-  user_id
+
+    user_id
 
 # Like
 | column       | type        | null         | unique   |
@@ -52,10 +53,12 @@
 | user_id      | references  | false        | true     |
 
  ・**assosiation**
+
     belongs_to :prototypes
     belongs_to :user
 
  ・**index**
+
     prototype_id
     user_id
 
@@ -68,10 +71,12 @@
 | prototype_id | references  | false        | true     |
 
  ・**assosiation**
+
     belongs_to :user
     belongs_to :prototype
 
  ・**index**
+
     user_id
     prototype_id
 
@@ -83,9 +88,10 @@
 | prototype_id | references  | false        | true     |
 
  ・**assosiation**
- belongs_to :prototype
+
+    belongs_to :prototype
 
  ・**index**
-    user_id
 
+    user_id
     prototype_id
