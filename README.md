@@ -1,24 +1,97 @@
-# README
+#DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# User
 
-Things you may want to cover:
+| column     | type        | null         | unique   |
+|:-----------|------------:|:------------:|:--------:|
+| name       | string      | false        |true      |
+| email      | string      | false        |true      |
+| password   | string      | false        |          |
+| image      | text        |              |          |
+| member     | string      |              |          |
+| profile    | text        | false        |          |
+| work       | string      |              |          |
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+  ・**assosiation**
 
-* Database creation
+    has_many :prototypes
+    has_many :comments
+    has_many :Likes
 
-* Database initialization
+  ・**index**
 
-* How to run the test suite
+     name
+     email
 
-* Services (job queues, cache servers, search engines, etc.)
+# prototype
 
-* Deployment instructions
+| column     | type        | null         | unique   |
+|:-----------|------------:|:------------:|:--------:|
+| title      | string      | false        |          |
+| catch_copy | string      | false        |          |
+| concept    | text        | false        |          |
+| user_id    | references  | false        | true     |
 
-* ...
+
+ ・**assosiation**
+
+    has_many   :comments
+    has_many   :capture_images
+    has_many   :Like
+    belongs_to :user
+
+ ・**index**
+
+    user_id
+
+# Like
+| column       | type        | null         | unique   |
+|:------------:|------------:|:------------:|:--------:|
+| prototype_id | references  | false        | true     |
+| user_id      | references  | false        | true     |
+
+ ・**assosiation**
+
+    belongs_to :prototypes
+    belongs_to :user
+
+ ・**index**
+
+    prototype_id
+    user_id
+
+# Commemt
+
+| column       | type        | null         | unique   |
+|:------------:|------------:|:------------:|:--------:|
+| content      | text        |              |          |
+| user_id      | references  | false        | true     |
+| prototype_id | references  | false        | true     |
+
+ ・**assosiation**
+
+    belongs_to :user
+    belongs_to :prototype
+
+ ・**index**
+
+    user_id
+    prototype_id
+
+# CaptureImage
+| column       | type        | null         | unique   |
+|:-------------|------------:|:------------:|:--------:|
+| content      | text        | false        |          |
+| rolw         | integer     | false        | true     |
+| prototype_id | references  | false        | true     |
+
+ ・**assosiation**
+
+    belongs_to :prototype
+
+ ・**index**
+
+    user_id
+    prototype_id
