@@ -84,7 +84,7 @@
 | column       | type        | null         | unique   |
 |:-------------|------------:|:------------:|:--------:|
 | content      | text        | false        |          |
-| rolw         | integer     | false        | true     |
+| role         | integer     | false        | true     |
 | prototype_id | references  | false        | true     |
 
  ・**assosiation**
