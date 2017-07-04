@@ -20,6 +20,9 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'carrierwave'
+gem 'rmagick', require: 'RMagick'
+
 
 # development and test gem list
 group :development, :test do
