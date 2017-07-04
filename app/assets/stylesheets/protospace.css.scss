@@ -368,6 +368,10 @@ body {
   .user-nav {
     padding: 50px 0;
 
+    .media {
+      margin-top: 20px;
+    }
+
     .media-object {
       border-radius: 50%;
     }
@@ -474,7 +478,7 @@ body {
 }
 
 .user-new {
-  padding-top: 20px;
+  padding-top: 45px;
 
   input[type="email"],
   input[type="text"],
@@ -625,3 +629,32 @@ body {
   height: 10px;
   text-align: center;
 }
+
+// flash_messages
+.alert {
+  margin: 0;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  height: 100px;
+}
+
+.alert-notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  margin-top: 52px;
+  height: 50px;
+  width: 100%;
+}
+
+.alert-alert {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+  margin-top: 52px;
+  height: 50px;
+  width: 100%;
+}
+
