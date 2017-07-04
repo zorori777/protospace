@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!, only: %i[edit update]
-
   before_action :setting_user,       only: %i[edit update show]
 
   def index
@@ -14,12 +13,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    if user.update(user_params)
-       redirect_to user_path, notice: "Updat is success!!"
+    if @user.update(user_params)
+      redirect_to user_path, notice: "Update is success!!"
     else
-      flash.now[:alert] = "Update is false!"
-      render :edit
+      redirect_to edit_user_path, alert: "Update is false"
     end
   end
 
@@ -30,11 +27,6 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:name,
-                                 :email,
-                                 :profile,
-                                 :image,
-                                 :member,
-                                 :work)
+    params.require(:user).permit(:name, :email, :profile, :image, :member, :work)
   end
 end
