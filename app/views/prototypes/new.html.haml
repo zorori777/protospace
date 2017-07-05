@@ -4,17 +4,21 @@
       .col-md-12
         =f.text_field :title, placeholder: "Title", class: "proto-new-title"
     .row
+    = f.fields_for :capture_images do |image|
       .col-md-12
         .cover-image-upload
-          =f.file_field :title
+          = image.file_field :content
+          = image.hidden_field :role, value: "set"
       .col-md-12
         %ul.proto-sub-list.list-group
           %li.list-group-item.col-md-4
             .image-upload
-              =f.file_field :title
+              = image.file_field :content
+              = image.hidden_field :role, value: "set"
           %li.list-group-item.col-md-4
             .image-upload
-              =f.file_field :title
+              = image.file_field :content
+              = image.hidden_field :role, value: "set"
           %li.list-group-item.col-md-4
             .image-upload-plus
               %span +
