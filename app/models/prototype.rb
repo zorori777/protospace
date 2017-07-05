@@ -4,5 +4,6 @@ class Prototype < ApplicationRecord
   #association
   belongs_to :user
   has_many   :capture_images
+  #making nested_form
   accepts_nested_attributes_for :capture_images
 end
