@@ -10,8 +10,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to root_path, notice: "Post is success"
     else
-      flash.now[:alert] = "Post is false"
-      render :new
+      redirect_to new_prototype_path, alert: @prototype.errors.full_messages
     end
   end
 
