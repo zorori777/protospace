@@ -6,11 +6,12 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    prototype = current_user.prototypes.new(prototype_params)
-    if prototype.save
+    @prototype = current_user.prototypes.new(prototype_params)
+    if @prototype.save
       redirect_to root_path, notice: "Post is success"
     else
-      redirect_to new_prototype_path, alert: "Post is false"
+      flash.now[:alert] = "Post is false"
+      render :new
     end
   end
 

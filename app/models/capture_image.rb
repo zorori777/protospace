@@ -5,4 +5,6 @@ class CaptureImage < ApplicationRecord
   mount_uploader :content, ImageUploader
   #define user_number for images
   enum role: { main: 0, sub: 1 }
+  #validation
+  validates :content, presence: true
 end
