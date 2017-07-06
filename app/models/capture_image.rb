@@ -1,6 +1,6 @@
 class CaptureImage < ApplicationRecord
   #associtation
-  belongs_to :prototype, optional: true
+  belongs_to :prototype, inverse_of: :capture_images
   #image_uploader
   mount_uploader :content, ImageUploader
   #define user_number for images
