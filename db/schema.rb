@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705045718) do
+ActiveRecord::Schema.define(version: 20170705152714) do
 
   create_table "capture_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "content",      limit: 65535
-    t.integer  "role"
     t.integer  "prototype_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "role",         limit: 1,     default: 0, null: false
     t.index ["prototype_id"], name: "index_capture_images_on_prototype_id", using: :btree
   end
 

@@ -8,17 +8,17 @@
       .col-md-12
         .cover-image-upload
           = image.file_field :content
-          = image.hidden_field :role, value: "set"
+          = image.hidden_field :role, value: "main"
       .col-md-12
         %ul.proto-sub-list.list-group
           %li.list-group-item.col-md-4
             .image-upload
               = image.file_field :content
-              = image.hidden_field :role, value: "set"
+              = image.hidden_field :role, value: "sub"
           %li.list-group-item.col-md-4
             .image-upload
               = image.file_field :content
-              = image.hidden_field :role, value: "set"
+              = image.hidden_field :role, value: "sub"
           %li.list-group-item.col-md-4
             .image-upload-plus
               %span +
