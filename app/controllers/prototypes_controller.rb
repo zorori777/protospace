@@ -1,5 +1,9 @@
 class PrototypesController < ApplicationController
 
+  def index
+    @prototypes = current_user.prototypes
+  end
+
   def new
     @prototype = current_user.prototypes.new
     @prototype.capture_images.build
