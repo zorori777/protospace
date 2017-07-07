@@ -1,0 +1,20 @@
+// flash_messages
+.alert {
+  margin: 0;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-notice {
+  background-color: $yellowgreen;
+  border-color: $greenyellow;
+  color: $deepgreen;
+}
+
+.alert-alert {
+  background-color: $weakpink;
+  border-color: $pink;
+  color: $deeppink;
+}

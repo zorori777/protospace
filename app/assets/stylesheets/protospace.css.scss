@@ -8,7 +8,7 @@ body {
   font-weight: 300;
   font-size: 14px;
   line-height: 1.4;
-  color: $black;
+  color: $weakblack;
 
   overflow-x: hidden;
 
@@ -407,8 +407,8 @@ body {
     margin-bottom: 20px;
 
     &:hover {
-      color: lighten($weakgray,10%);
-      box-shadow: 0 1px 1px ;
+      color: lighten($deepblack,10%);
+      box-shadow: 0 1px 1px $weakgray;
     }
   }
 
@@ -628,27 +628,4 @@ body {
 .tag-project {
   height: 10px;
   text-align: center;
-}
-
-// flash_messages
-.alert {
-  margin: 0;
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
-
-.alert-notice {
-  background-color: $yellowgreen;
-  border-color: $greenyellow;
-  color: $deepgreen;
-  margin-top: 52px;
-}
-
-.alert-alert {
-  background-color: $weakpink;
-  border-color: $pink;
-  color: $deeppink;
-  margin-top: 52px;
 }

@@ -1,5 +1,5 @@
 / %form.container.user-new{action: ""}
-=form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "container user-new" }) do |f|
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "container user-new" }) do |f|
   .col-md-8.col-md-offset-2
   = devise_error_messages!
     %header.row.user-nav.row
@@ -7,26 +7,26 @@
         %h2 Register
         .user-name_image.row
           .user-name.col-md-10
-            =f.text_field :name, placeholder: "Username"
+            = f.text_field :name, placeholder: "Username"
           .user-image.col-md-2
             %button.btn.btn-primary Add image
             %input{type: "file"}/
-            =f.image_field :image
+            = f.image_field :image
 
-        =f.email_field :email, placeholder: "E-Mail",class: "user-email"
-        =f.password_field :password, placeholder: "Password", class: "user-password"
+        = f.email_field :email, placeholder: "E-Mail",class: "user-email"
+        = f.password_field :password, placeholder: "Password", class: "user-password"
       .col-md-12
         %h4 Member of
         .user-user-member.row
           .user-name.col-md-12
-            =f.text_field :member, placeholder: "Member"
+            = f.text_field :member, placeholder: "Member"
         %h4 Profile
         .user-user-profile.row
           .user-name.col-md-12
-            =f.text_area :profile, placeholder: "Profile"
+            = f.text_area :profile, placeholder: "Profile"
         %h4 Works
         .user-name_image.row
           .user-name.col-md-12
-            =f.text_area :work, placeholder: "Works"
+            = f.text_area :work, placeholder: "Works"
     .row.text-center.user-btn
       = f.submit "Save", class: "btn btn-lg btn-primary btn-block"
