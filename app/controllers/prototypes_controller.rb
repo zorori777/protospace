@@ -1,7 +1,7 @@
 class PrototypesController < ApplicationController
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.includes(:capture_images).order("created_at DESC ")
   end
 
   def new
