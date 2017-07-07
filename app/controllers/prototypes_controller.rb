@@ -1,7 +1,7 @@
 class PrototypesController < ApplicationController
 
   def index
-    @prototypes = current_user.prototypes
+    @prototypes = Prototype.all
   end
 
   def new
@@ -16,6 +16,10 @@ class PrototypesController < ApplicationController
     else
       redirect_to new_prototype_path, alert: @prototype.errors.full_messages
     end
+  end
+
+  def show
+    @prototype = Prototype.find(params[:id])
   end
 
   private
