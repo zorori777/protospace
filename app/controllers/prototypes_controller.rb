@@ -1,5 +1,9 @@
 class PrototypesController < ApplicationController
 
+  def index
+    @prototypes = Prototype.includes(:capture_images).order("created_at DESC ")
+  end
+
   def new
     @prototype = current_user.prototypes.new
     @prototype.capture_images.build
@@ -12,6 +16,10 @@ class PrototypesController < ApplicationController
     else
       redirect_to new_prototype_path, alert: @prototype.errors.full_messages
     end
+  end
+
+  def show
+    @prototype = Prototype.find(params[:id])
   end
 
   private
