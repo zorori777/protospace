@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @prototypes = @user.prototypes.order("created_at DESC").limit(5)
   end
 
   def edit
