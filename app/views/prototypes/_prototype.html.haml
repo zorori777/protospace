@@ -1,17 +1,16 @@
 .col-sm-4.col-md-3.proto-content
   .thumbnail
-    - prototype.capture_images.each do |img|
-      = link_to image_tag(img.content), prototype_path(prototype)
-      .caption
-        %h3= prototype.title
-        .proto-meta
-          .proto-user
-            = link_to user_path(prototype.user) do
-              = "by\s" +  prototype.user.name
-          .proto-posted
-            = prototype.created_at.strftime('%b %t %d')
-        %ul.proto-tag-list.list-inline
-          %li
-            %a{href: "#", class: "btn btn-default"} iPad
-          %li
-            %a{href: "#", class: "btn btn-default"} wireframe
+    = link_to image_tag(prototype.capture_images.main.first.content), prototype_path(prototype)
+    .caption
+      %h3= prototype.title
+      .proto-meta
+        .proto-user
+          = link_to user_path(prototype.user) do
+            = "by\s" +  prototype.user.name
+        .proto-posted
+          = prototype.created_at.strftime('%b %t %d')
+      %ul.proto-tag-list.list-inline
+        %li
+          %a{href: "#", class: "btn btn-default"} iPad
+        %li
+          %a{href: "#", class: "btn btn-default"} wireframe
