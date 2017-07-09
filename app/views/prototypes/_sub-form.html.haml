@@ -1,4 +1,4 @@
-- prototype.capture_images.sub.each.with_index(0) do |image, i|
+- prototype.capture_images.sub.each.with_index do |image, i|
   %ul.proto-sub-list.list-group
   = f.fields_for :capture_images, prototype.capture_images.sub[i] do |image|
     %li.list-group-item.col-md-4
