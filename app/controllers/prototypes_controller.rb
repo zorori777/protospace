@@ -1,11 +1,10 @@
 class PrototypesController < ApplicationController
 
+  before_action :set_prototype, only: %i[edit update show]
+  before_action :authenticate_user!, only: %i[edit update]
+
   def index
     @prototypes = Prototype.includes(:capture_images).order("created_at DESC ")
-  end
-
-  def show
-    @prototype = Prototype.find(params[:id])
   end
 
   def new
@@ -14,7 +13,7 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    @prototype = current_user.prototypes.new(prototype_params)
+    @prototype = current_user.prototypes.new(create_params)
     if @prototype.save
       redirect_to root_path, notice: "Post is success"
     else
@@ -22,9 +21,28 @@ class PrototypesController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @prototype.update(create_params)
+      redirect_to root_path, notice: "Update is success"
+    else
+      redirect_to prototype_path(@prototype), alert: @prototype.errors.full_messages
+    end
+  end
+
   private
 
-  def prototype_params
-    params.require(:prototype).permit(:title, :catch_copy, :concept,capture_images_attributes: [:content, :role])
+  def create_params
+    params.require(:prototype).permit(:title, :catch_copy, :concept,
+      capture_images_attributes: [:id, :content, :role])
+  end
+
+  def set_prototype
+    @prototype = Prototype.find(params[:id])
   end
 end

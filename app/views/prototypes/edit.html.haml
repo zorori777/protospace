@@ -1,0 +1,22 @@
+= form_for @prototype, html: {class: "container proto-new"} do |f|
+  .col-md-8.col-md-offset-2
+    %header.row.user-nav.row
+      .col-md-12
+        = f.text_field :title, placeholder: "Title", class: "proto-new-title"
+    = f.fields_for :capture_images, @prototype.capture_images.main do |image|
+      .col-md-12
+        .cover-image-upload
+          = image.file_field :content
+          = image.hidden_field :role, value: "main"
+      .col-md-12
+      = render "sub-form", f: f, prototype: @prototype
+    %li.list-group-item.col-md-4
+      .image-upload-plus
+        %span +
+    .row.proto-description
+      .col-md-12
+        = f.text_field :catch_copy, placeholder: "Catch Copy"
+      .col-md-12
+        = f.text_area :concept, placeholder: "Concept"
+    .row.text-center.proto-btn
+    = f.submit 'Publish' ,class: "btn btn-lg btn-primary btn-block"
