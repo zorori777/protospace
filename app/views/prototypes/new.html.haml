@@ -3,25 +3,22 @@
     %header.row.user-nav.row
       .col-md-12
         = f.text_field :title, placeholder: "Title", class: "proto-new-title"
-    .row
     = f.fields_for :capture_images do |image|
       .col-md-12
         .cover-image-upload
           = image.file_field :content
           = image.hidden_field :role, value: "main"
       .col-md-12
+      - 2.times do
         %ul.proto-sub-list.list-group
+        = f.fields_for :capture_images do |image|
           %li.list-group-item.col-md-4
             .image-upload
               = image.file_field :content
               = image.hidden_field :role, value: "sub"
-          %li.list-group-item.col-md-4
-            .image-upload
-              = image.file_field :content
-              = image.hidden_field :role, value: "sub"
-          %li.list-group-item.col-md-4
-            .image-upload-plus
-              %span +
+    %li.list-group-item.col-md-4
+      .image-upload-plus
+        %span +
     .row.proto-description
       .col-md-12
         = f.text_field :catch_copy, placeholder: "Catch Copy"
@@ -37,4 +34,4 @@
           .col-md-3
             %input{type: "text", placeholder: "Application"}/
     .row.text-center.proto-btn
-      = f.submit 'Publish' ,class: "btn btn-lg btn-primary btn-block"
+    = f.submit 'Publish' ,class: "btn btn-lg btn-primary btn-block"
