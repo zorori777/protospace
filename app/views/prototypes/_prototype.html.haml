@@ -10,7 +10,7 @@
           %li
             = link_to "Edit", edit_prototype_path(prototype)
           %li
-            %a{:href => "#"} Another action
+            = link_to "Delete", prototype_path(prototype), method: :delete, data: { confirm: "Are you really delete?"}
     .caption
       %h3= prototype.title
       .proto-meta

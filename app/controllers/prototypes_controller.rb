@@ -1,7 +1,7 @@
 class PrototypesController < ApplicationController
 
-  before_action :set_prototype, only: %i[edit update show]
-  before_action :authenticate_user!, only: %i[edit update]
+  before_action :set_prototype, except: %i[index new create]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @prototypes = Prototype.includes(:capture_images).order("created_at DESC ")
@@ -33,6 +33,11 @@ class PrototypesController < ApplicationController
     else
       redirect_to prototype_path(@prototype), alert: @prototype.errors.full_messages
     end
+  end
+
+  def destroy
+    @prototype.destroy
+    redirect_to root_path, notice: "Delete is success"
   end
 
   private
