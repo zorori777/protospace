@@ -4,7 +4,7 @@ class PrototypesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @prototypes = Prototype.includes(:capture_images).order("created_at DESC ")
+    @prototypes = Prototype.includes(:user).order("created_at DESC ")
   end
 
   def new
