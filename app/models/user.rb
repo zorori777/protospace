@@ -4,4 +4,5 @@ class User < ApplicationRecord
   validates :name, :profile, presence: true
   mount_uploader :image, ImageUploader
   has_many :prototypes
+  has_many :comments
 end

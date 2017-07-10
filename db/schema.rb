@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705152714) do
+ActiveRecord::Schema.define(version: 20170709140819) do
 
   create_table "capture_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "content",      limit: 65535
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20170705152714) do
     t.datetime "updated_at",                             null: false
     t.integer  "role",         limit: 1,     default: 0, null: false
     t.index ["prototype_id"], name: "index_capture_images_on_prototype_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "content",      limit: 65535
+    t.integer  "user_id",                    null: false
+    t.integer  "prototype_id",               null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["prototype_id"], name: "index_comments_on_prototype_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "prototypes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -54,5 +64,7 @@ ActiveRecord::Schema.define(version: 20170705152714) do
   end
 
   add_foreign_key "capture_images", "prototypes"
+  add_foreign_key "comments", "prototypes"
+  add_foreign_key "comments", "users"
   add_foreign_key "prototypes", "users"
 end
