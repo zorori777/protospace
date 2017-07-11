@@ -8,8 +8,4 @@ class Prototype < ApplicationRecord
   has_many   :likes
   #making nested_form
   accepts_nested_attributes_for :capture_images
-  # Use like function
-  def like_user(user_id)
-   likes.find_by(user_id: user_id)
-  end
 end

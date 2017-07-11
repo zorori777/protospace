@@ -12,11 +12,8 @@
             = link_to user_path(@prototype.user) do
               = "by\s" + @prototype.user.name
             %span.degree= @prototype.user.work
-    .col-md-6.text-right
-      %button.btn.btn-default
-        = image_tag("icon_heart.svg")
-        Like
-        %span.num 20
+    .col-md-6.text-right#likes
+      = render "likes/like"
   .row
     .col-md-9
       = image_tag(@prototype.capture_images.main.first.content, class: "img-responsive")
