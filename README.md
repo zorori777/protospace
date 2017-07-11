@@ -1,6 +1,6 @@
-#DB設計
+# DB設計
 
-# User
+## User
 
 | column     | type        | null         | unique   |
 |:-----------|------------:|:------------:|:--------:|
@@ -25,7 +25,7 @@
      name
      email
 
-# prototype
+## prototype
 
 | column     | type        | null         | unique   |
 |:-----------|------------:|:------------:|:--------:|
@@ -33,6 +33,7 @@
 | catch_copy | string      | false        |          |
 | concept    | text        | false        |          |
 | user_id    | references  | false        | true     |
+| likes_count| integer     |              |          |
 
 
  ・**assosiation**
@@ -46,7 +47,7 @@
 
     user_id
 
-# Like
+## Like
 | column       | type        | null         | unique   |
 |:------------:|------------:|:------------:|:--------:|
 | prototype_id | references  | false        | true     |
@@ -62,7 +63,7 @@
     prototype_id
     user_id
 
-# Commemt
+## Commemt
 
 | column       | type        | null         | unique   |
 |:------------:|------------:|:------------:|:--------:|
@@ -80,7 +81,7 @@
     user_id
     prototype_id
 
-# CaptureImage
+## CaptureImage
 | column       | type        | null         | unique   |
 |:-------------|------------:|:------------:|:--------:|
 | content      | text        | false        |          |
@@ -95,3 +96,15 @@
 
     user_id
     prototype_id
+
+
+## Like
+| column       | type        | null         | unique   |
+|:-------------|------------:|:------------:|:--------:|
+| user_id      | intege      | false        |          |
+| prototype_id | integer     | false        |          |
+
+ ・**association**
+
+    belongs_to :user
+    belongs_to :prototype
