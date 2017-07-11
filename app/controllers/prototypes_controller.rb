@@ -3,6 +3,10 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, except: %i[index new create]
   before_action :authenticate_user!, except: %i[index show]
 
+  def index
+    @prototypes = Prototype.includes(:user).order("created_at DESC ")
+  end
+
   def new
     @prototype = current_user.prototypes.new
     @prototype.capture_images.build
