@@ -26,3 +26,5 @@ config/initializers/
 app/assets/images/
 test/
 app/helpers/
+app/assets/javascripts/
+app/assets/stylesheets/
