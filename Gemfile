@@ -22,6 +22,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick', require: 'RMagick'
+gem 'acts-as-taggable-on', '~> 4.0'
 
 
 # development and test gem list
