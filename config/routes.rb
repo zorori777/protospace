@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :comments, only: :create
     resources :likes, only: %i[create destroy]
   end
+  resources :tags, only: %i[index show]
 # routing fot sort popular
   scope module: 'prototypes' do
     root to: "popular#index"
