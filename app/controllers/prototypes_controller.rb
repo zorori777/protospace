@@ -31,7 +31,6 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    binding.pry
     if @prototype.update(create_params)
       redirect_to root_path, notice: "Update is success"
     else
