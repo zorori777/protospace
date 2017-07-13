@@ -4,7 +4,7 @@ class PrototypesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @prototypes = Prototype.includes(:user).order(created_at: :desc)
+    @prototypes = Prototype.includes([:user, :tags]).order(created_at: :desc)
   end
 
   def new
@@ -48,7 +48,10 @@ class PrototypesController < ApplicationController
   def create_params
     params.require(:prototype).permit(
       :title, :catch_copy, :concept,
-      capture_images_attributes: [:id, :content, :role])
+      capture_images_attributes: [:id, :content, :role]).
+      merge(
+      tag_list: params[:prototype][:tag]
+      )
   end
 
   def set_prototype

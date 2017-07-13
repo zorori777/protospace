@@ -5,4 +5,5 @@
         = link_to "Popular PROTO", root_path
       %li{role: "presentation"}
         = link_to "Newest PROTO", prototypes_path
-    %button{type: "button", class: "btn btn-default col-lg-1"} View Tags
+    = button_tag class: "btn btn-default col-lg-1" do
+      = link_to "View Tags", tags_path

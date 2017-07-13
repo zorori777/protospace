@@ -8,4 +8,6 @@ class Prototype < ApplicationRecord
   has_many   :likes
   #making nested_form
   accepts_nested_attributes_for :capture_images
+  # tag function
+  acts_as_taggable
 end
