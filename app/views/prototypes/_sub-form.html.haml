@@ -3,5 +3,6 @@
   = f.fields_for :capture_images, prototype.capture_images.sub[i] do |image|
     %li.list-group-item.col-md-4
       .image-upload
-        = image.file_field :content
-        = image.hidden_field :role, value: "sub"
+        .js-preview-image
+          = image.file_field :content
+          = image.hidden_field :role, value: "main"
