@@ -6,8 +6,9 @@
     = f.fields_for :capture_images, @prototype.capture_images.main do |image|
       .col-md-12
         .cover-image-upload
-          = image.file_field :content
-          = image.hidden_field :role, value: "main"
+          .js-preview-image
+            = image.file_field :content
+            = image.hidden_field :role, value: "main"
       .col-md-12
       = render "sub-form", f: f, prototype: @prototype
     %li.list-group-item.col-md-4
