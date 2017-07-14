@@ -6,16 +6,18 @@
     = f.fields_for :capture_images do |image|
       .col-md-12
         .cover-image-upload
-          = image.file_field :content
-          = image.hidden_field :role, value: "main"
+          .js-preview-image
+            = image.file_field :content
+            = image.hidden_field :role, value: "main"
       .col-md-12
       - 2.times do
         %ul.proto-sub-list.list-group
         = f.fields_for :capture_images do |image|
           %li.list-group-item.col-md-4
             .image-upload
-              = image.file_field :content
-              = image.hidden_field :role, value: "sub"
+              .js-preview-image
+                = image.file_field :content
+                = image.hidden_field :role, value: "sub"
     %li.list-group-item.col-md-4
       .image-upload-plus
         %span +
