@@ -1,5 +1,5 @@
 .col-sm-4.col-md-3.proto-content
-  .thumbnail
+  .thumbnail#js-preview-image
     = link_to image_tag(prototype.capture_images.main.first.content), prototype_path(prototype)
     - if user_signed_in? && current_user.id == prototype.user_id
       .btn-group

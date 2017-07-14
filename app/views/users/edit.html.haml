@@ -8,7 +8,8 @@
             = f.text_field :name, placeholder: "Username"
           .user-image.col-md-2
             %button.btn.btn-primary Add image
-            = f.file_field :image
+            .js-preview-image
+              = f.file_field :image
 
         = f.email_field :email, placeholder: "E-Mail",class: "user-email"
 
