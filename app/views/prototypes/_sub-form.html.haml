@@ -2,6 +2,7 @@
   %ul.proto-sub-list.list-group
   = f.fields_for :capture_images, prototype.capture_images.sub[i] do |image|
     %li.list-group-item.col-md-4
-      .image-upload
+      .image-upload.js-imgInput
         = image.file_field :content
         = image.hidden_field :role, value: "sub"
+        = image_tag prototype.capture_images.sub[i].content, class: "preEditImage"

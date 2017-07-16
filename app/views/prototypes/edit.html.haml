@@ -5,9 +5,10 @@
         = f.text_field :title, placeholder: "Title", class: "proto-new-title"
     = f.fields_for :capture_images, @prototype.capture_images.main do |image|
       .col-md-12
-        .cover-image-upload
+        .cover-image-upload.js-imgInput
           = image.file_field :content
           = image.hidden_field :role, value: "main"
+          = image_tag @prototype.capture_images.main.first.content, class: 'preEditImage'
       .col-md-12
       = render "sub-form", f: f, prototype: @prototype
     %li.list-group-item.col-md-4
