@@ -629,3 +629,20 @@ body {
   height: 10px;
   text-align: center;
 }
+
+// js for preview-imae
+.preEditImage{
+  display:block;
+  height:100%;
+  max-width: 100%;
+  margin:0 auto;
+}
+
+.user-image-size{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position:absolute;
+  left: -1px;
+  margin: auto;
+}
