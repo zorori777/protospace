@@ -22,6 +22,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick', require: 'RMagick'
+gem 'fog'
 gem 'acts-as-taggable-on', '~> 4.0'
 gem 'kaminari'
 
