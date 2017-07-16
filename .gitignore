@@ -27,3 +27,4 @@ app/assets/images/
 test/
 app/helpers/
 app/assets/stylesheets/
+config/secrets.yml
