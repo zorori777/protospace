@@ -1,3 +1,4 @@
+require 'factory_girl_rails'
 
 RSpec.configure do |config|
 
@@ -12,4 +13,7 @@ RSpec.configure do |config|
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
+# Set customize for factoryfirl
+  config.include FactoryGirl::Syntax::Methods
 end
+
