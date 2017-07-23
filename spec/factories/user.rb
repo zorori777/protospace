@@ -12,4 +12,9 @@ FactoryGirl.define do
     work                   { Faker::Company.name }
     image                  { Faker::Company.logo }
   end
+
+  factory :invalid_user, class: User do
+    name  "watasan"
+  end
 end
+
