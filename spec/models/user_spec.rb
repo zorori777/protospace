@@ -33,7 +33,6 @@ describe User do
       expect( another_user.errors[:email]).to include("has already been taken")
     end
 
-
     it "is invalid without a password_confirmation" do
       user.password_confirmation = ""
       user.valid?
