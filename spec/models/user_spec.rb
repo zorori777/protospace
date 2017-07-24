@@ -5,10 +5,11 @@ describe User do
     let(:user) { build(:user) }
     let(:invalid_user) { build(:invalid_user) }
     let(:user_without_name) { build(:user, name: '') }
-    let(:user_without_email) { build(:user, email: '')}
-    let(:user_without_password) { build(:user, password: '')}
-    let(:user_without_password_confirmation){ build(:user, password_confirmation: '')}
-    let(:user_without_profile){ build(:user, profile: '')}
+    let(:user_without_email) { build(:user, email: '') }
+    let(:user_without_password) { build(:user, password: '') }
+    let(:user_without_password_confirmation) { build(:user, password_confirmation: '') }
+    let(:user_without_profile) { build(:user, profile: '') }
+    let(:user_name_over_count) { build(:user, name: 'watasan') }
 
 
     it "is valid a user" do
@@ -48,9 +49,8 @@ describe User do
     end
 
     it "is invalid with a name that has more than 7 characters" do
-      invalid_user
-      invalid_user.valid?
-      expect(invalid_user.errors[:name]).to include("is too long (maximum is 6 characters)")
+      user_name_over_count.valid?
+      expect(user_name_over_count.errors[:name]).to include("is too long (maximum is 6 characters)")
     end
   end
 end
