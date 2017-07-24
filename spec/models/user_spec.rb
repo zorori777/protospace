@@ -4,32 +4,30 @@ describe User do
   describe '#create' do
     let(:user) { build(:user) }
     let(:invalid_user) { build(:invalid_user) }
-    let(:blank_name) { user.name = "" }
-    let(:blank_email) { user.email = "" }
-    let(:blank_password) { user.password = "" }
-    let(:blank_password_confirmation) { user.password_confirmation = "" }
-    let(:blank_profile) { user.profile = "" }
+    let(:user_without_name) { build(:user, name: '') }
+    let(:user_without_email) { build(:user, email: '')}
+    let(:user_without_password) { build(:user, password: '')}
+    let(:user_without_password_confirmation){ build(:user, password_confirmation: '')}
+    let(:user_without_profile){ build(:user, profile: '')}
+
 
     it "is valid a user" do
       expect(user).to be_valid
     end
 
     it "is invalid without a name" do
-      blank_name
-      user.valid?
-      expect(user.errors[:name]).to include("can't be blank")
+      user_without_name.valid?
+      expect(user_without_name.errors[:name]).to include("can't be blank")
     end
 
     it "is invalid without an email" do
-      blank_email
-      user.valid?
-      expect(user.errors[:email]).to include("can't be blank")
+      user_without_email.valid?
+      expect(user_without_email.errors[:email]).to include("can't be blank")
     end
 
     it "is invalid without a password" do
-      blank_password
-      user.valid?
-      expect(user.errors[:password]).to include("can't be blank")
+      user_without_password.valid?
+      expect(user_without_password.errors[:password]).to include("can't be blank")
     end
 
     it " is invalid with a duplicate email address" do
@@ -40,15 +38,13 @@ describe User do
     end
 
     it "is invalid without a password_confirmation" do
-      blank_password_confirmation
-      user.valid?
-      expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+      user_without_password_confirmation.valid?
+      expect(user_without_password_confirmation.errors[:password_confirmation]).to include("doesn't match Password")
     end
 
     it "is invalid without a profile" do
-      blank_profile
-      user.valid?
-      expect(user.errors[:profile]).to include("can't be blank")
+      user_without_profile.valid?
+      expect(user_without_profile.errors[:profile]).to include("can't be blank")
     end
 
     it "is invalid with a name that has more than 7 characters" do
