@@ -15,5 +15,14 @@ FactoryGirl.define do
       prototype.comments << create_list(:comment, evaluator.comments_count)
     end
   end
+
+  trait :with_likes do
+    transient do
+      likes_count 5
+    end
+    after(:create) do |prototype, evaluator|
+      prototype.likes << create_list(:like, evaluator.likes_count)
+    end
+  end
 end
 
