@@ -31,6 +31,7 @@ describe Prototype do
         end
       end
     end
+
     describe 'associations' do
       let(:user) { create(:user) }
       let(:prototype) { create(:prototype, user: user)}
@@ -38,6 +39,13 @@ describe Prototype do
          it "is associated with user" do
           prototype = create(:prototype, user: user)
           expect(prototype.user).to eq user
+        end
+      end
+
+      context 'comment' do
+        let!(:prototype) { create(:prototype, :with_comments) }
+        it 'deletes the comments when prototype is deleted' do
+          expect{ prototype.destroy }.to change { Comment.count }.by(-5)
         end
       end
     end
