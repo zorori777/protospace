@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe Prototype do
   describe '#create' do
-    let(:prototype) { build(:prototype) }
     describe 'validation' do
+      let(:prototype) { build(:prototype) }
       let(:prototype_without_title) { build(:prototype, title: '') }
       let(:prototype_without_catch_copy) { build(:prototype, catch_copy: '') }
       let(:prototype_without_concept) {build(:prototype, concept: '') }
@@ -28,6 +28,16 @@ describe Prototype do
         it "is invalid without a concept" do
           prototype_without_concept.valid?
           expect(prototype_without_concept.errors[:concept]).to include("can't be blank")
+        end
+      end
+    end
+    describe 'associations' do
+      let(:user) { create(:user) }
+      let(:prototype) { create(:prototype, user: user)}
+      context 'user' do
+         it "is associated with user" do
+          prototype = create(:prototype, user: user)
+          expect(prototype.user).to eq user
         end
       end
     end
