@@ -8,13 +8,13 @@ describe Prototype do
       let(:prototype_without_catch_copy) { build(:prototype, catch_copy: '') }
       let(:prototype_without_concept) {build(:prototype, concept: '') }
 
-      context 'valid date' do
+      context 'valid data' do
         it 'is valid prototype' do
           expect(prototype).to be_valid
         end
       end
 
-      context 'invalid date' do
+      context 'invalid data' do
         it "is invalid without a title" do
           prototype_without_title.valid?
           expect(prototype_without_title.errors[:title]).to include("can't be blank")
