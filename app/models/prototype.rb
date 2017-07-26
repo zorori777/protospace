@@ -10,4 +10,8 @@ class Prototype < ApplicationRecord
   accepts_nested_attributes_for :capture_images
   # tag function
   acts_as_taggable
+
+  def posted_date
+    created_at.strftime('%b %d')
+  end
 end

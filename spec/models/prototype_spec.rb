@@ -56,5 +56,12 @@ describe Prototype do
         end
       end
     end
+
+    describe '#posted_date' do
+      it "returns dates in a specified format" do
+        prototype = build(:prototype, created_at: '2017-07-07')
+        expect(prototype.posted_date).to eq 'Jul 07'
+      end
+    end
   end
 end
