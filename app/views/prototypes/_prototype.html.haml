@@ -18,7 +18,7 @@
           = link_to user_path(prototype.user) do
             = "by\s" +  prototype.user.name
         .proto-posted
-          = prototype.created_at.strftime('%b %t %d')
+          = prototype.posted_date
       %ul.proto-tag-list.list-inline
         - prototype.tags.each do |label|
           %li
