@@ -4,8 +4,8 @@ describe CaptureImage do
   describe '#create' do
     describe 'validation' do
       context 'valid date' do
+        let(:image){ create(:capture_image, :main) }
         it "is valid CaptureImage" do
-          image = create(:capture_image, :main)
           image.valid?
           expect(image).to be_valid
         end
