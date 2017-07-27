@@ -18,5 +18,12 @@ describe CaptureImage do
         end
       end
     end
+    describe 'association' do
+      let!(:prototype) { create(:prototype) }
+      let(:image){ create(:capture_image, :main, prototype: prototype) }
+      it "is associated with prototype" do
+        expect(image.prototype).to eq prototype
+      end
+    end
   end
 end
