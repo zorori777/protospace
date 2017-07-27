@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :capture_image do
-    content     { Faker::Company.logo }
+    content { Faker::Company.logo }
     prototype
 
     trait :main do
@@ -11,6 +11,11 @@ FactoryGirl.define do
     trait :sub do
       role :sub
     end
+
+    trait :wrong_format do
+      content { fixture_file_upload("spec/fixtures/img/takumi.jppg", 'image/jppg') }
+    end
+
   end
 end
 
