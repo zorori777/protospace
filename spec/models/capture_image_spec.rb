@@ -5,7 +5,7 @@ describe CaptureImage do
     describe 'validation' do
       context 'valid date' do
         it "is valid CaptureImage" do
-          image = create(:capture_image)
+          image = create(:capture_image, :main)
           image.valid?
           expect(image).to be_valid
         end
@@ -18,11 +18,20 @@ describe CaptureImage do
         end
       end
     end
+
     describe 'association' do
       let!(:prototype) { create(:prototype) }
       let(:image){ create(:capture_image, :main, prototype: prototype) }
       it "is associated with prototype" do
         expect(image.prototype).to eq prototype
+      end
+    end
+
+    describe 'valid_image_format' do
+      let!(:content_wrong_format) { build(:capture_image, :main, :wrong_format) }
+      it "has the wrong content format" do
+        content_wrong_format.valid?
+        expect(content_wrong_format.errors[:content]).to include("translation missing: en.errors.messages.rmagick_processing_error")
       end
     end
   end
