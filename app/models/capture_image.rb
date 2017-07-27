@@ -7,4 +7,5 @@ class CaptureImage < ApplicationRecord
   enum role: { main: 0, sub: 1 }
   #validation
   validates :content, presence: true, allow_blank: true
+  validates :role, presence: true
 end
