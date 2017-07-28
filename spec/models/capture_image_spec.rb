@@ -28,10 +28,10 @@ describe CaptureImage do
     end
 
     describe 'valid_image_format' do
-      let!(:content_wrong_format) { build(:capture_image, :main, :wrong_format) }
-      it "has the wrong content format" do
-        content_wrong_format.valid?
-        expect(content_wrong_format.errors[:content]).to include("translation missing: en.errors.messages.rmagick_processing_error")
+      let!(:content_invalid_format) { build(:capture_image, :main, :invalid_format) }
+      it "has the invalid content format" do
+        content_invalid_format.valid?
+        expect(content_invalid_format.errors[:content]).to include("translation missing: en.errors.messages.rmagick_processing_error")
       end
     end
   end
