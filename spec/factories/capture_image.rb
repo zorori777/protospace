@@ -15,7 +15,6 @@ FactoryGirl.define do
     trait :invalid_format do
       content { fixture_file_upload("spec/fixtures/img/takumi.jppg", 'image/jppg') }
     end
-
   end
 end
 

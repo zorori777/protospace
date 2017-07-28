@@ -14,7 +14,7 @@ describe CaptureImage do
         let(:image_without_role) { build(:capture_image, role: '') }
         it "is invalid without a role" do
           image_without_role.valid?
-          expect(image_without_role.errors[:role]).to include("can't be blank")
+          expect(image_without_role.errors[:role]).to include("を入力してください。")
         end
       end
     end
@@ -31,7 +31,7 @@ describe CaptureImage do
       let!(:content_invalid_format) { build(:capture_image, :main, :invalid_format) }
       it "has the invalid content format" do
         content_invalid_format.valid?
-        expect(content_invalid_format.errors[:content]).to include("translation missing: en.errors.messages.rmagick_processing_error")
+        expect(content_invalid_format.errors[:content]).to include("rmagickがファイルを処理できませんでした。画像を確認してください。")
       end
     end
   end
