@@ -4,8 +4,8 @@ require 'devise'
 describe PrototypesController do
   let(:user) { create(:user) }
   let(:prototype) { create(:prototype, user: user)}
-  let(:update_params) { { id: prototype.id, prototype: attributes_for(:prototype, title: "takumi") }}
-  let(:update_blank_title_params) { { id: prototype, prototype: attributes_for(:prototype, title: '') }}
+  let(:prototype_params) { { id: prototype.id, prototype: attributes_for(:prototype, title: "takumi") }}
+  let(:prototype_blank_title_params) { { id: prototype, prototype: attributes_for(:prototype, title: '') }}
 
   describe "login user" do
     before do
@@ -51,7 +51,7 @@ describe PrototypesController do
 
       context "When save is success" do
         before do
-          patch :update, update_params
+          patch :update, prototype_params
         end
 
         it "assigns the requested prototype to @prototype" do
@@ -74,7 +74,7 @@ describe PrototypesController do
 
       context "When save is false" do
         before do
-          patch :update, update_blank_title_params
+          patch :update, prototype_blank_title_params
         end
 
         it "redirects edit page when save is false" do
@@ -83,6 +83,50 @@ describe PrototypesController do
 
         it "flashes an alert unsave message" do
           expect(flash[:alert]).to include("Titleを入力してください。")
+        end
+      end
+
+      describe "POST #create" do
+        context " When save is success" do
+          before do
+            post :create, prototype_params
+          end
+
+          it "save the new prototype in the database" do
+            expect{
+              post :create,
+              prototype_params
+            }.to change(Prototype, :count).by(1)
+          end
+
+          it "redirects root_path" do
+            expect(response).to redirect_to root_path
+          end
+
+          it "flashes a notice save message" do
+            expect(flash[:notice]).to include("Post is success")
+          end
+        end
+
+        context "When save is false" do
+          before do
+            post :create, prototype_blank_title_params
+          end
+
+          it "does not save the new prototype in the database" do
+            expect{
+              post :create,
+              prototype_blank_title_params
+            }.to change(Prototype, :count).by(0)
+          end
+
+          it "redirects new page" do
+            expect(response).to redirect_to new_prototype_path
+          end
+
+          it "flashes an alert unsave message" do
+            expect(flash[:alert]).to include("Titleを入力してください。")
+          end
         end
       end
     end
