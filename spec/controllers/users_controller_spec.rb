@@ -3,7 +3,7 @@ require 'rails_helper'
 describe  UsersController do
   let(:user) { create(:user) }
   let(:update_params) {{ id: user.id, user: attributes_for(:user, name: "wata") }}
-  let(:update_blank_name) {{ id: user.id, user: attributes_for(:user, name: '') }}
+  let(:update_blank_name_params) {{ id: user.id, user: attributes_for(:user, name: '') }}
 
   context 'login user' do
     before do
@@ -71,16 +71,14 @@ describe  UsersController do
 
       context "When save is false" do
         before do
-          patch :update, update_blank_name
+          patch :update, update_blank_name_params
         end
 
         it "redirects edit page when save is false" do
-          patch :update, update_blank_name
           expect(response).to redirect_to edit_user_path
         end
 
         it "flashes a alert unsave_message" do
-          patch :update, update_blank_name
           expect(flash[:alert]).to include("Update is false")
         end
       end
