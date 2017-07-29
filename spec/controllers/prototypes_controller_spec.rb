@@ -7,9 +7,28 @@ describe PrototypesController do
   let(:prototype_params) { { id: prototype.id, prototype: attributes_for(:prototype, title: "takumi") }}
   let(:prototype_blank_title_params) { { id: prototype, prototype: attributes_for(:prototype, title: '') }}
 
+
   describe "login user" do
     before do
       login_user user
+    end
+
+    describe "GET #show" do
+      before do
+        get :show, id: prototype
+      end
+
+      it "assigns requested assigns prototype to @prototype" do
+        expect(assigns(:prototype)).to eq prototype
+      end
+
+      it "the requested assigns comment to @comment" do
+        expect(assigns(:comment)).to be_a_new(Comment)
+      end
+
+      it "renders the :show template" do
+        expect(response).to render_template :show
+      end
     end
 
     describe "GET #edit" do
