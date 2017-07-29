@@ -34,6 +34,7 @@ group :development, :test do
   gem "rspec-rails"         #Rails 専用の機能を追加するRSpecのラッパーライブラリ
   gem "factory_girl_rails"  #テストデータを作成する
   gem "faker", "~> 1.6.6"              #名前やメールアドレス、その他のプレースホルダなどをダミーデータ生成
+  gem 'rails-controller-testing'
 end
 
 # development gem list
