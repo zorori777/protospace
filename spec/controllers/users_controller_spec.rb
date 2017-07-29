@@ -39,7 +39,7 @@ describe  UsersController do
         expect(assigns(:user)).to eq user
       end
 
-      it "render the :edit template" do
+      it "renders the :edit template" do
         expect(response).to render_template :edit
       end
     end
@@ -60,7 +60,7 @@ describe  UsersController do
           expect(user.name).to eq "wata"
         end
 
-        it "redirect show page when save is success" do
+        it "redirects show page when save is success" do
           expect(response).to redirect_to user_path
         end
 
@@ -74,7 +74,7 @@ describe  UsersController do
           patch :update, update_blank_name
         end
 
-        it "redirected edit page when save is false" do
+        it "redirects edit page when save is false" do
           patch :update, update_blank_name
           expect(response).to redirect_to edit_user_path
         end
