@@ -23,4 +23,10 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include ControllerMacros, type: :controller
 
+# upload image file for image_format_test
+  config.include ActionDispatch::TestProcess
+  FactoryGirl::SyntaxRunner.class_eval do
+    include ActionDispatch::TestProcess
+  end
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
 end
