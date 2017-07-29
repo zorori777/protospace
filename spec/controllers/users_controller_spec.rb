@@ -86,4 +86,20 @@ describe  UsersController do
       end
     end
   end
+
+  context 'without login user' do
+    describe 'GET #edit' do
+      it "redirects sign_in page" do
+        get :edit, id: user
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+
+    describe "PATCH #update" do
+      it "redirects sign_in page" do
+        patch :update, update_params
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
 end
