@@ -4,35 +4,31 @@ require 'devise'
 describe PrototypesController do
   let(:user) { create(:user) }
   let(:prototype) { create(:prototype, user: user)}
-  let(:likes) { create_list(:like, 3, prototype: prototype, user: user) }
 
   describe "login user" do
     before do
       login_user user
     end
 
-    # let(:prototypes) { create_list(:prototype, 3, user_id: user.id) }
-
-    describe "GET #show" do
-      before do
-        get :show, params: { id: prototype }
-      end
-
+    describe "GET #edit" do
       it "assigns the requested prototype to @prototype" do
+        get :edit, id: prototype
         expect(assigns(:prototype)).to eq prototype
       end
 
-       it "assigns the requested prototype to @comment" do
-        expect(assigns(:comment)).to be_a_new(Comment)
+      it "renders the :edit template" do
+        get :edit, id: prototype
+        expect(response).to render_template :edit
       end
 
-      it "assigns likes associated with prototype to @likes" do
-        expect(assigns(:likes).to eq prototype.likes
+      it "assigns main_image to @main_image" do
+        get :edit, id: prototype
+        expect(assigns(:main_image)).to eq prototype.capture_images.main.first
       end
 
-
-      it "renders the :show template" do
-        expect(response).to render_template :show
+      it "assigns sub_image to @sub_image" do
+        get :edit, id: prototype
+        expect(assigns(:sub_image)).to eq prototype.capture_images.sub.first
       end
     end
   end
