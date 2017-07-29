@@ -191,5 +191,43 @@ describe PrototypesController do
       end
     end
   end
+
+  describe "without login user" do
+
+    describe "GET #new" do
+      it "redirects sign_in page" do
+        get :new
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+
+    describe "POST #create" do
+      it "redirects sign_in page" do
+        post :create, id: prototype
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+
+    describe "GET #edit" do
+      it "redirects sign_in page" do
+        get :edit, id: prototype
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+
+    describe "PATCH #update" do
+      it "redirects sign_in page" do
+        patch :update, id: prototype
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+
+    describe "DELETE #destroy" do
+      it "redirects sign_in page" do
+        delete :destroy, id: prototype
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
 end
 
