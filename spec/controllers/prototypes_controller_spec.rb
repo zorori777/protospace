@@ -13,6 +13,20 @@ describe PrototypesController do
       login_user user
     end
 
+    describe "GET #index" do
+
+      # temp for error
+      # it "populates an array of messages ordered by created_at DESC" do
+      #   get :index
+      #   expect(assigns(:prototypes)).to match(prototype {|a, b| b.created_at <=> a.created_at })
+      # end
+
+      it " renders the :index template" do
+        get :index
+        expect(response).to render_template :index
+      end
+    end
+
     describe "GET #show" do
       before do
         get :show, id: prototype
@@ -29,6 +43,10 @@ describe PrototypesController do
       it "renders the :show template" do
         expect(response).to render_template :show
       end
+
+      # it "assigns likes associated with likes prototype to @likes" do
+      #   expect(assigns(:likes)).to eq prototype.likes
+      # end
     end
 
     describe "GET #edit" do
