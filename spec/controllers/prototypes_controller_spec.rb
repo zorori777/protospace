@@ -3,23 +3,20 @@ require 'devise'
 
 describe PrototypesController do
   let(:user) { create(:user) }
-  let(:prototype) { create(:prototype, user: user)}
+  let(:prototype) { create(:prototype)}
   let(:prototype_params) { { id: prototype.id, prototype: attributes_for(:prototype, title: "takumi") }}
-  let(:prototype_blank_title_params) { { id: prototype, prototype: attributes_for(:prototype, title: '') }}
-
+  let(:prototype_blank_title_params) {{ id: prototype, prototype: attributes_for(:prototype, title: '') }}
+  let!(:prototypes) { create_list(:prototype, 3) }
 
   describe "login user" do
-    before do
-      login_user user
-    end
+    before { login_user }
 
     describe "GET #index" do
 
-      # temp for error
-      # it "populates an array of messages ordered by created_at DESC" do
-      #   get :index
-      #   expect(assigns(:prototypes)).to match(prototype {|a, b| b.created_at <=> a.created_at })
-      # end
+      it "populates an array of messages ordered by created_at DESC" do
+        get :index
+        expect(assigns(:prototypes)).to include prototype
+      ende
 
       it " renders the :index template" do
         get :index
@@ -44,9 +41,9 @@ describe PrototypesController do
         expect(response).to render_template :show
       end
 
-      # it "assigns likes associated with likes prototype to @likes" do
-      #   expect(assigns(:likes)).to eq prototype.likes
-      # end
+      it "assigns likes associated with likes prototype to @likes" do
+        expect(assigns(:likes)).to eq prototype.likes.first
+      end
     end
 
     describe "GET #edit" do
