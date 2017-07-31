@@ -12,14 +12,15 @@ describe PrototypesController do
     before { login_user }
 
     describe "GET #index" do
+      before do
+        get :index
+      end
 
       it "populates an array of messages ordered by created_at DESC" do
-        get :index
         expect(assigns(:prototypes)).to include prototype
       ende
 
       it " renders the :index template" do
-        get :index
         expect(response).to render_template :index
       end
     end
