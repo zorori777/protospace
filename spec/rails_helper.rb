@@ -20,6 +20,10 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.filter_rails_from_backtrace!
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include ControllerMacros, type: :controller
+
 # upload image file for image_format_test
   config.include ActionDispatch::TestProcess
   FactoryGirl::SyntaxRunner.class_eval do
